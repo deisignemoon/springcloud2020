@@ -1,0 +1,28 @@
+server:
+  port: 7002
+  undertow:
+    io-threads: 1
+    worker-threads: 8
+    buffer-size: 512
+    direct-buffer: true
+eureka:
+  instance:
+    hostname: eureka7002.com
+  client:
+    #表示不向注册中心注册自己
+    register-with-eureka: false
+    #表示我是注册中心
+    fetch-registry: false
+    service-url:
+      #与eureka server交互的地址查询服务与注册服务都依赖这地址
+      defaultZone: http://eureka7001.com:7001/eureka/
+  #server:
+    #enable-self-preservation: false #关闭eureka安全模式
+spring:
+  devtools:
+    restart:
+      enabled: false
+
+logging:
+  level:
+    web: info

@@ -1,0 +1,8 @@
+server:
+  port: 9001
+#进行hystrix.stream监控必须有以下几个条件
+#0.监控服务必须导入DashBoard坐标，主启动类上@EnableHystrixDashboard或@EnableHystrix
+#1.被监控服务必须使用hystrix容错框架，springboot.actuator服务监控框架，springboot.web框架
+#2.被监控服务主启动类上必须有@EnableCircuitBreaker
+#3.被监控服务必须配置management.endpoints.web:.exposure.include: hystrix.stream
+#4.当/actuator/hystrix.stream一直ping无数据时，对进行了容错的服务进行一次调用，可以使监控出现

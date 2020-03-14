@@ -1,0 +1,34 @@
+server:
+  port: 80
+spring:
+  application:
+    name: cloud-openfeign-hystrix-order
+  devtools:
+    restart:
+      enabled: false
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka #,http://eureka7002.com:7002/eureka
+    fetch-registry: true
+    register-with-eureka: false
+logging:
+  level:
+    #feign日志增强，注意为service的引用
+    com.atguigu.springcloud.service.PaymentService: debug
+    web: debug
+
+ribbon:
+  ReadTimeout: 5000
+  ConnectTimeout: 5000
+
+feign:
+  hystrix:
+    enabled: true #启动hystrix 客户端服务降级
+# 设置hystrix 超时时间必须大于ribbon/feign的超时时间，否则超过ribbon超时时间而不到hystrix超时时间，一样会触发fallback
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

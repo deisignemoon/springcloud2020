@@ -1,0 +1,21 @@
+server:
+  port: 80
+  undertow:
+    io-threads: 1
+    worker-threads: 8
+    buffer-size: 512
+    direct-buffer: true
+
+spring:
+  application:
+    name: cloud-order-service
+  devtools:
+    restart:
+      enabled: false
+  cloud:
+    zookeeper:
+      connect-string: 192.168.111.128:2191,192.168.111.128:2192,192.168.111.128:2193
+
+logging:
+  level:
+    web: debug

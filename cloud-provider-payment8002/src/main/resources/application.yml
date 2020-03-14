@@ -1,0 +1,59 @@
+server:
+  port: 8002
+  undertow:
+    io-threads: 1
+    worker-threads: 8
+    buffer-size: 512
+    direct-buffer: true
+
+spring:
+  application:
+    name: cloud-payment-service
+  datasource:
+#    type: com.alibaba.druid.pool.DruidDataSource  #当前数据源操作类型
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver #数据库驱动包
+    url: jdbc:mysql://localhost:3306/cloud?characterEncoding=utf8&useSSL=false&serverTimezone=UTC&rewriteBatchedStatements=true
+    username: root
+    password: 123456
+    hikari:
+      connection-timeout: 20000
+      minimum-idle: 5
+      maximum-pool-size: 10
+      max-lifetime: 200000
+      auto-commit: true
+  devtools:
+    restart:
+      enabled: false #是否热部署重启
+
+
+eureka:
+  client:
+    #表示向注册中心注册自己
+    register-with-eureka: true
+    #表示是否eurekaserver抓取已有的注册信息，在集群下有必要
+    fetch-registry: true
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka #,http://eureka7002.com:7002/eureka
+  instance:
+    prefer-ip-address: true #显示ip，端口号
+    instance-id: payment8002 #自定义应用实例名（无所谓自定义）
+
+
+logging:
+  level:
+    web: debug
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.atguigu.springcloud.entities
+#actuator/info的信息
+management:
+  endpoints:
+    web:
+      base-path: /actuator
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always

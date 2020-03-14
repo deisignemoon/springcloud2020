@@ -1,0 +1,40 @@
+server:
+  port: 9527
+
+eureka:
+  client:
+    #表示向注册中心注册自己
+    register-with-eureka: true
+    #表示是否eurekaserver抓取已有的注册信息，在集群下有必要
+    fetch-registry: true
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka #,http://eureka7002.com:7002/eureka
+  instance:
+    prefer-ip-address: true #显示ip，端口号
+    instance-id: gateway9527 #自定义主机实例名（无所谓自定义）
+    hostname: cloud-gateway-service
+
+
+spring:
+  application:
+    name: cloud-gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true #开启从注册中心创建动态路由，利用微服务名进行路由
+      routes:
+        - id: payment_route1 #唯一id，建议配合服务名
+          #uri: http://localhost:8001 #匹配后提供服务的路由地址
+          uri: lb://CLOUD-PAYMENT-SERVICE
+          predicates:
+            - Path=/payment/get/** #断言，路径相匹配的进行路由
+
+        - id: payment_route2
+          #uri: http://localhost:8001
+          uri: lb://CLOUD-PAYMENT-SERVICE
+          predicates:
+            - Path=/payment/lb
+            #- After=2020-03-14T13:59:20.719+08:00[Asia/Shanghai] #After，Before,Between都是配置在那个时间段内可以访问
+#gateway文档
+#https://cloud.spring.io/spring-cloud-static/spring-cloud-gateway/2.2.2.RELEASE/reference/html/#the-path-route-predicate-factory

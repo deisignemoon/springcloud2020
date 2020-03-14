@@ -1,0 +1,45 @@
+server:
+  port: 8001
+  undertow: #undertow配置
+    io-threads: 1
+    worker-threads: 8
+    buffer-size: 512
+    direct-buffer: true
+
+spring:
+  application:
+    name: cloud-payment-hystrix-service
+  devtools:
+    restart:
+      enabled: false #是否热部署重启
+
+
+eureka:
+  client:
+    #表示向注册中心注册自己
+    register-with-eureka: true
+    #表示是否eurekaserver抓取已有的注册信息，在集群下有必要
+    fetch-registry: true
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka #,http://eureka7002.com:7002/eureka
+  instance:
+    prefer-ip-address: true #显示ip，端口号
+    instance-id: payment8001 #自定义主机实例名（无所谓自定义）
+    #lease-expiration-duration-in-seconds: 4 #(租约到期期限) 等待心跳超时时间，默认为90秒
+    #lease-renewal-interval-in-seconds: 2 #（租约更新间隔）心跳发送间隔时间，默认30秒
+
+logging:
+  level:
+    web: debug
+
+#actuator/info的信息
+management:
+  endpoints:
+    web:
+      #base-path: /actuator
+      exposure:
+        include: hystrix.stream
+#  endpoint:
+#    health:
+#      show-details: always
+      #获得/actuator/info 如果为null，可以使用maven->plugins->spring-boot-spring-boot-info 运行

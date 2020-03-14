@@ -1,0 +1,25 @@
+server:
+  port: 3344
+
+
+eureka:
+  client:
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka
+
+spring:
+  application:
+    name: cloud-config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/deisignemoon/springcloud-config2020.git
+          search-paths:
+            - spring-config2020 #放置配置文件的仓库名
+          #username: deisignemoon
+          #password: DX2011JX1104011166
+          timeout: 15
+      label: master #默认的获取分支
+      #配置中心在主启动类上添加@EnableConfigServer（开启配置中心），@EnableEurekaClient（开启eureke注册）
