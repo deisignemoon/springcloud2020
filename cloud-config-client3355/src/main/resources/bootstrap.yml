@@ -10,6 +10,17 @@ spring:
       name: config #配置的文件名
       profile: dev #配置的profile
       uri: http://localhost:3344 #config中心地址
+  #使用rabbitmq消息中间件配合bus消息总线，可以达到一处通知修改处处生效的效果
+  #需要依赖spring-cloud-starter-bus-amqp/kafka（bus目前只支持rabbitmq与kafka）
+  #添加rabbitmq配置，在config-center服务上增加actuator的bus-refresh endpoint
+  #当github上文件发生修改，config-center可以获得修改后信息，发送一个/actuator/bus-refresh的post请求到config-center
+  #所有在rabbitmq上订阅springcloudbus(默认是这个)主题的服务都会收到通知，修改配置文件
+  #若需要通知部分服务节点，则发送/actuator/bus-refresh/{部分节点的spring.application.name:port}的post请求到config-center,即可，支持通配
+  rabbitmq:
+    host: localhost
+    port: 5672
+    password: guest
+    username: guest
 
 eureka:
   client:

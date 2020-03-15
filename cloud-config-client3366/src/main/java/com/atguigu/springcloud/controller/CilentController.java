@@ -9,13 +9,12 @@ import org.springframework.web.bind.annotation.RestController;
 /**
  * @author xiacong
  * @version 1.0
- * @date 2020/3/14 17:21
+ * @date 2020/3/15 13:25
  */
-
 @RestController
 @Slf4j
-@RefreshScope //添加这个可以手动POST刷新config
-public class ClientController {
+@RefreshScope
+public class CilentController {
     @Value("${server.port}")
     private String serverPort;
 
@@ -26,5 +25,4 @@ public class ClientController {
     public String getConfigInfo(){
         return "server.port: "+serverPort+"  "+configInfo;
     }
-
 }
