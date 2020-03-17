@@ -1,0 +1,52 @@
+server:
+  port: 8803
+  undertow: #undertow配置
+    io-threads: 1
+    worker-threads: 8
+    buffer-size: 512
+    direct-buffer: true
+
+spring:
+  application:
+    name: cloud-stream-consumer
+  cloud:
+    stream:
+      binders:  #配置需要绑定的rabbitmq的信息
+        defaultRabbit: #表示定义的名称，用于binding的整合
+          type: rabbit #消息中间件的名称
+          environment: #设置rabbitmq的相关环境配置
+            spring:
+              rabbitmq:
+                host: localhost
+                port: 5672
+                usernsme: guest
+                password: guest
+      bindings:  #服务的整合处理
+        input:  #一个通道的名称
+          destination: studyExchange #表示使用的exchange的名称定义
+          content-type: application/json #使用的消息类型，可以使用text/plain
+          binder: defaultRabbit #设置要绑定的消息服务的具体设置
+          group: atguiguA #加入group自动分组并持久化，当微服务下线，未被消费的消息在上线后会自动消费，且不会重复消费
+  devtools:
+    restart:
+      enabled: true #是否热部署重启
+
+eureka:
+  client:
+    #表示向注册中心注册自己
+    register-with-eureka: true
+    #表示是否eureka server抓取已有的注册信息，在集群下有必要
+    fetch-registry: true
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka #,http://eureka7002.com:7002/eureka
+  instance:
+    prefer-ip-address: true #显示ip，端口号
+    instance-id: stream-consumer8803 #主机实例名（无所谓自定义）
+    lease-expiration-duration-in-seconds: 5 #(租约到期期限) 等待心跳超时时间，默认为90秒
+    lease-renewal-interval-in-seconds: 2 #（租约更新间隔）心跳发送间隔时间，默认30秒
+management:
+  endpoints:
+    web:
+      base-path: /actuator
+      exposure:
+        include: "*"
