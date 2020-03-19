@@ -1,0 +1,27 @@
+server:
+  port: 9001
+  undertow: #undertow配置
+    io-threads: 1
+    worker-threads: 8
+    buffer-size: 512
+    direct-buffer: true
+
+spring:
+  application:
+    name: nacos-provider-payment
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+
+serverInfo:
+  info: nacos_test_discovery9001
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+logging:
+  level:
+    web: debug

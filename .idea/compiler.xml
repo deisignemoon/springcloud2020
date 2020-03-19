@@ -19,6 +19,7 @@
         <module name="cloud-eureka-server7001" />
         <module name="cloud-eureka-server7002" />
         <module name="cloud-gateway-gateway9527" />
+        <module name="cloud-nacos-config-client9004" />
         <module name="cloud-provider-hystrix-payment8001" />
         <module name="cloud-provider-payment8001" />
         <module name="cloud-provider-payment8002" />
@@ -27,10 +28,15 @@
         <module name="cloud-stream-rabbitmq-consumer8802" />
         <module name="cloud-stream-rabbitmq-consumer8803" />
         <module name="cloud-stream-rabboitmq-provider8801" />
+        <module name="cloudalibaba-nacos-config-client9004" />
+        <module name="cloudalibaba-nacos-order9003" />
+        <module name="cloudalibaba-nacos-payment9001" />
+        <module name="cloudalibaba-nacos-payment9002" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="8">
       <module name="cloud-consumer-hysrtix-payment8001" target="1.8" />
+      <module name="cloud-nacos-config-client9004" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
