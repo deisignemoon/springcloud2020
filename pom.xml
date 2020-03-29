@@ -33,6 +33,7 @@
         <module>cloudalibaba-nacos-order9003</module>
         <module>cloudalibaba-nacos-payment9002</module>
         <module>cloudalibaba-nacos-config-client9004</module>
+        <module>cloudalibaba-sentinel-service8401</module>
     </modules>
     <packaging>pom</packaging>
 

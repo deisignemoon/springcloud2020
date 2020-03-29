@@ -1,0 +1,28 @@
+server:
+  port: 8401
+  undertow: #undertow配置
+    io-threads: 1
+    worker-threads: 8
+    buffer-size: 512
+    direct-buffer: true
+
+spring:
+  application:
+    name: cloudalibaba-sentinel-service
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+    sentinel:
+      transport:
+        #配置sentinel-dashboard的ip
+        dashboard: localhost:8080
+        #该端口将启动一个http server，与dashboard交互，各种规则由它提交给dashboard
+        port: 8719
+#用于监控
+management:
+  endpoints:
+    web:
+      base-path: /actuator
+      exposure:
+        include: "*"

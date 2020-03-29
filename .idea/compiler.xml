@@ -32,6 +32,7 @@
         <module name="cloudalibaba-nacos-order9003" />
         <module name="cloudalibaba-nacos-payment9001" />
         <module name="cloudalibaba-nacos-payment9002" />
+        <module name="cloudalibaba-sentinel-service8401" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="8">
