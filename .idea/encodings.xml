@@ -27,6 +27,12 @@
     <file url="file://$PROJECT_DIR$/cloudalibaba-nacos-order9003" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/cloudalibaba-nacos-payment9001" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/cloudalibaba-nacos-payment9002" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/cloudalibaba-seata-account-service" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/cloudalibaba-seata-order-service" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/cloudalibaba-seata-storage-service" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/cloudalibaba-sentinel-order84" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/cloudalibaba-sentinel-payment9090" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/cloudalibaba-sentinel-payment9091" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/cloudalibaba-sentinel-service8401" charset="UTF-8" />
     <file url="PROJECT" charset="UTF-8" />
   </component>

@@ -12,6 +12,11 @@
     <artifactId>cloudalibaba-sentinel-service8401</artifactId>
 
     <dependencies>
+
+        <dependency>
+            <groupId>com.atguigu.springcloud</groupId>
+            <artifactId>cloud-api-commons</artifactId>
+        </dependency>
         <!-- https://mvnrepository.com/artifact/com.alibaba.csp/sentinel-datasource-nacos -->
         <dependency>
             <groupId>com.alibaba.csp</groupId>

@@ -1,0 +1,47 @@
+server:
+  port: 2003
+  undertow: #undertow配置
+    io-threads: 1
+    worker-threads: 8
+    buffer-size: 512
+    direct-buffer: true
+
+spring:
+  application:
+    name: seata-account-service
+  datasource:
+    hikari: #hikari连接池配置
+      connection-timeout: 20000
+      minimum-idle: 5
+      maximum-pool-size: 10
+      max-lifetime: 200000
+      auto-commit: true
+      jdbc-url: jdbc:mysql://localhost:3306/seata_account?characterEncoding=utf8&useSSL=false&serverTimezone=UTC&rewriteBatchedStatements=true
+      username: root
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      password: 123456
+    devtools:
+      restart:
+        enabled: false #是否热部署重启
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+    alibaba:
+      seata:
+        tx-service-group: fsp_tx_group
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+logging:
+  level:
+    root: info
+feign:
+  hystrix:
+    enabled: false
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.atguigu.springcloudalibaba.entities

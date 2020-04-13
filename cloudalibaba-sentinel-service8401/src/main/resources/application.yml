@@ -19,6 +19,14 @@ spring:
         dashboard: localhost:8080
         #该端口将启动一个http server，与dashboard交互，各种规则由它提交给dashboard
         port: 8719
+      datasource:
+        ds1:
+          nacos:
+            server-addr: localhost:8848
+            dataId: cloudalibaba-sentinel-service
+            groupId: DEFAULT_GROUP
+            data-type: json
+            rule-type: flow
 #用于监控
 management:
   endpoints:

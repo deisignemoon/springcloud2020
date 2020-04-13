@@ -32,6 +32,12 @@
         <module name="cloudalibaba-nacos-order9003" />
         <module name="cloudalibaba-nacos-payment9001" />
         <module name="cloudalibaba-nacos-payment9002" />
+        <module name="cloudalibaba-seata-account-service" />
+        <module name="cloudalibaba-seata-order-service" />
+        <module name="cloudalibaba-seata-storage-service" />
+        <module name="cloudalibaba-sentinel-order84" />
+        <module name="cloudalibaba-sentinel-payment9090" />
+        <module name="cloudalibaba-sentinel-payment9091" />
         <module name="cloudalibaba-sentinel-service8401" />
       </profile>
     </annotationProcessing>

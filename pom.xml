@@ -34,6 +34,12 @@
         <module>cloudalibaba-nacos-payment9002</module>
         <module>cloudalibaba-nacos-config-client9004</module>
         <module>cloudalibaba-sentinel-service8401</module>
+        <module>cloudalibaba-sentinel-payment9090</module>
+        <module>cloudalibaba-sentinel-payment9091</module>
+        <module>cloudalibaba-sentinel-order84</module>
+        <module>cloudalibaba-seata-order-service</module>
+        <module>cloudalibaba-seata-storage-service</module>
+        <module>cloudalibaba-seata-account-service</module>
     </modules>
     <packaging>pom</packaging>
 
